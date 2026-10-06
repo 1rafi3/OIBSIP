@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Oasis Infobyte Web Development & Designing Task Suite by MD Sheik Rafiwol Karim Rafi. Complete Level 1 & Level 2 interactive deliverables.">
+  <title>OIBSIP Hub | MD Sheik Rafiwol Karim Rafi — Web Development &amp; Designing</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-surface: #0d121f;
+      --bg-card: rgba(18, 26, 43, 0.75);
+      --bg-card-hover: rgba(26, 38, 64, 0.9);
+      
+      --text-main: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --accent-primary: #6366f1;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(99, 102, 241, 0.4);
+      
+      --font-main: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      
+      --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 35px rgba(99, 102, 241, 0.25);
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Atmosphere Glow */
+    .glow-sphere {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+      filter: blur(90px);
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.7);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+
+    .brand-icon { font-size: 1.4rem; }
+    .brand-accent { color: var(--accent-cyan); }
+
+    .header-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .header-links a:hover { color: var(--accent-cyan); }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all var(--transition);
+    }
+
+    .btn-github:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 5rem 0 3.5rem 0;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid var(--accent-primary);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 1rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.5rem;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-emerald);
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .gradient-text {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .profile-card {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 0.75rem 2rem;
+      font-size: 0.9rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .profile-item strong { color: var(--text-main); }
+    .profile-item span { color: var(--text-muted); }
+
+    /* Filter Tabs */
+    .controls-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      background: var(--accent-primary);
+      color: #fff;
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Project Cards Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition);
+      backdrop-filter: blur(14px);
+    }
+
+    .project-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card), var(--shadow-glow);
+    }
+
+    .card-banner {
+      height: 140px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2.5rem;
+    }
+
+    .banner-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      color: #fff;
+    }
+
+    .banner-portfolio { background: linear-gradient(135deg, #4f46e5, #06b6d4); }
+    .banner-auth { background: linear-gradient(135deg, #4338ca, #6d28d9); }
+    .banner-todo { background: linear-gradient(135deg, #059669, #0d9488); }
+    .banner-calc { background: linear-gradient(135deg, #d97706, #ea580c); }
+    .banner-landing { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+    .banner-temp { background: linear-gradient(135deg, #db2777, #9333ea); }
+    .banner-tribute { background: linear-gradient(135deg, #475569, #1e293b); }
+
+    .card-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--accent-cyan);
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      flex-grow: 1;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-launch {
+      background: var(--accent-gradient);
+      color: #fff;
+      flex-grow: 1;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-launch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-code {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    .btn-code:hover {
+      color: var(--text-main);
+      border-color: var(--accent-primary);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 2.5rem 0;
+      background: var(--bg-surface);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer a { color: var(--accent-cyan); }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.4rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .profile-card { border-radius: var(--radius-lg); flex-direction: column; gap: 0.5rem; text-align: center; }
+      .header-links a:not(.btn-github) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-sphere"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-icon">🌐</span>
+        <span>OIBSIP<span class="brand-accent">.Hub</span></span>
+      </div>
+      <div class="header-links">
+        <a href="#projects">All Tasks</a>
+        <a href="./WebDev-L1-PersonalPortfolio/index.html">Personal Portfolio</a>
+        <a href="https://github.com/1rafi3/OIBSIP" target="_blank" rel="noopener noreferrer" class="btn-github">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          <span>GitHub Repo</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Hero Header -->
+    <section class="hero">
+      <div class="badge-top">
+        <span class="pulse"></span>
+        <span>OASIS INFOBYTE SIP · SUBMISSION PORTAL</span>
+      </div>
+
+      <h1 class="hero-title">
+        Web Development &amp; Designing <br>
+        <span class="gradient-text">Complete Project Showcase</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        High-performance web applications engineered by <strong>MD Sheik Rafiwol Karim Rafi</strong> with clean semantic HTML5, modern vanilla CSS3 design systems, and vanilla ES6+ JavaScript.
+      </p>
+
+      <div class="profile-card">
+        <div class="profile-item"><strong>Intern:</strong> <span>MD Sheik Rafiwol Karim Rafi</span></div>
+        <div class="profile-item"><strong>Track:</strong> <span>Web Development &amp; Designing</span></div>
+        <div class="profile-item"><strong>Status:</strong> <span style="color: var(--accent-emerald);">Level 1 &amp; Level 2 Complete (7 Tasks)</span></div>
+      </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <div class="controls-bar" id="controls">
+      <button class="tab-btn active" data-filter="all">All Projects (7)</button>
+      <button class="tab-btn" data-filter="l1">Level 1 Tasks (3)</button>
+      <button class="tab-btn" data-filter="l2">Level 2 Tasks (4)</button>
+    </div>
+
+    <!-- Projects Grid -->
+    <section class="projects-grid" id="projects">
+
+      <!-- 1. Personal Portfolio -->
+      <article class="project-card" data-level="l1">
+        <div class="card-banner banner-portfolio">
+          <span class="banner-badge">Level 1 · Task 2</span>
+          <span>👨‍💻</span>
+        </div>
+        <div class="card-body">
+          <div class="tags-row">
+            <span class="tag">Flagship Asset</span>
+            <span class="tag">MERN Profile</span>
+            <span class="tag">Theme Toggle</span>
+            <span class="tag">Responsive</span>
+          </div>
+          <h2 class="card-title">Personal Developer Portfolio</h2>
+          <p class="card-desc">
+            Digital résumé showcasing full-stack MERN skills, academic background in Computer Science, interactive categorized skill matrix, dark/light theme, and validated contact form.
+          </p>
+          <div class="card-actions">
+            <a href="./WebDev-L1-PersonalPortfolio/index.html" class="btn btn-launch">🚀 Launch Project</a>
+            <a href="https://github.com/1rafi3/OIBSIP/tree/main/WebDev-L1-PersonalPortfolio" target="_blank" rel="noopener noreferrer" class="btn btn-code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Auth System -->
+      <article class="project-card" data-level="l2">
+        <div class="card-banner banner-auth">
+          <span class="banner-badge">Level 2 · Task 4</span>
+          <span>🛡️</span>
+        </div>
+        <div class="card-body">
+          <div class="tags-row">
+            <span class="tag">Web Crypto API</span>
+            <span class="tag">SHA-256 Hashing</span>
+            <span class="tag">Session Guard</span>
+            <span class="tag">Dashboard</span>
+          </div>
+          <h2 class="card-title">AuthShield Pro — Secure Authentication</h2>
+          <p class="card-desc">
+            Client-side authentication suite with Web Crypto SHA-256 password hashing (zero plaintext storage), dynamic strength checklist, duplicate detection, and protected dashboard.
+          </p>
+          <div class="card-actions">
+            <a href="./WebDev-L2-AuthSystem/index.html" class="btn btn-launch">🚀 Launch Project</a>
+            <a href="https://github.com/1rafi3/OIBSIP/tree/main/WebDev-L2-AuthSystem" target="_blank" rel="noopener noreferrer" class="btn btn-code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. To-Do App -->
+      <article class="project-card" data-level="l2">
+        <div class="card-banner banner-todo">
+          <span class="banner-badge">Level 2 · Task 3</span>
+          <span>⚡</span>
+        </div>
+        <div class="card-body">
+          <div class="tags-row">
+            <span class="tag">Stateful CRUD</span>
+            <span class="tag">Inline Edit</span>
+            <span class="tag">LocalStorage</span>
+            <span class="tag">Priority Badges</span>
+          </div>
+          <h2 class="card-title">TaskMaster Pro — Productivity Suite</h2>
+          <p class="card-desc">
+            Interactive task management app with dual pending/completed tracking boards, inline task editing, priority tags, real-time completion percentage, and search filters.
+          </p>
+          <div class="card-actions">
+            <a href="./WebDev-L2-TodoApp/index.html" class="btn btn-launch">🚀 Launch Project</a>
+            <a href="https://github.com/1rafi3/OIBSIP/tree/main/WebDev-L2-TodoApp" target="_blank" rel="noopener noreferrer" class="btn btn-code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. Calculator -->
+      <article class="project-card" data-level="l2">
+        <div class="card-banner banner-calc">
+          <span class="banner-badge">Level 2 · Task 1</span>
+          <span>🧮</span>
+        </div>
+        <div class="card-body">
+          <div class="tags-row">
+            <span class="tag">CSS Grid</span>
+            <span class="tag">No eval()</span>
+            <span class="tag">Keyboard Support</span>
+            <span class="tag">Calculation Tape</span>
+          </div>
+          <h2 class="card-title">OmniCalc Pro — Modern Calculator</h2>
+          <p class="card-desc">
+            High-precision arithmetic calculator featuring sequential operator chaining, division-by-zero protection, full keyboard shortcut navigation, and an audit history tape.
+          </p>
+          <div class="card-actions">
+            <a href="./WebDev-L2-Calculator/index.html" class="btn btn-launch">🚀 Launch Project</a>
+            <a href="https://github.com/1rafi3/OIBSIP/tree/main/WebDev-L2-Calculator" target="_blank" rel="noopener noreferrer" class="btn btn-code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. SaaS Landing Page -->
+      <article class="project-card" data-level="l1">
+        <div class="card-banner banner-landing">
+          <span class="banner-badge">Level 1 · Task 1</span>
+          <span>🚀</span>
+        </div>
+        <div class="card-body">
+          <div class="tags-row">
+            <span class="tag">Bento Grid</span>
+            <span class="tag">Sticky Blur Nav</span>
+            <span class="tag">Pricing Toggle</span>
+            <span class="tag">FAQ Accordion</span>
+          </div>
+          <h2 class="card-title">NovaCode AI — SaaS Landing Page</h2>
+          <p class="card-desc">
+            High-conversion modern SaaS showcase with responsive bento-grid feature tiles, sticky navigation, interactive Monthly/Yearly pricing switcher, and accordion FAQs.
+          </p>
+          <div class="card-actions">
+            <a href="./WebDev-L1-LandingPage/index.html" class="btn btn-launch">🚀 Launch Project</a>
+            <a href="https://github.com/1rafi3/OIBSIP/tree/main/WebDev-L1-LandingPage" target="_blank" rel="noopener noreferrer" class="btn btn-code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. Temperature Converter -->
+      <article class="project-card" data-level="l1">
+        <div class="card-banner banner-temp">
+          <span class="banner-badge">Level 1 · Task 3</span>
+          <span>🌡️</span>
+        </div>
+        <div class="card-body">
+          <div class="tags-row">
+            <span class="tag">Mercury Simulation</span>
+            <span class="tag">C / F / K Units</span>
+            <span class="tag">Absolute Zero Guard</span>
+            <span class="tag">Presets</span>
+          </div>
+          <h2 class="card-title">ThermoFlow — Temperature Studio</h2>
+          <p class="card-desc">
+            Interactive thermodynamic studio with simultaneous Celsius, Fahrenheit, and Kelvin calculations, animated mercury thermometer column, and physical absolute zero boundary safety limits.
+          </p>
+          <div class="card-actions">
+            <a href="./WebDev-L1-TemperatureConverter/index.html" class="btn btn-launch">🚀 Launch Project</a>
+            <a href="https://github.com/1rafi3/OIBSIP/tree/main/WebDev-L1-TemperatureConverter" target="_blank" rel="noopener noreferrer" class="btn btn-code">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. Tribute Page -->
+      <article class="project-card" data-level="l2">
+        <div class="card-banner banner-tribute">
+          <span class="banner-badge">Level 2 · Task 2</span>
+          <span>🏛️</span>
+        </div>
+        <div class="card-body">
+          <div class="tags-row">
+            <span class="tag">Editorial Design</span>
+            <span class="tag">Font Pairing</span>
+            <span class="tag">Timeline Tree</span>
+            <span class="tag">Enigma Simulator</span>
+          </div>
+          <h2 class="card-title">Alan Turing — Interactive Tribute</h2>
+          <p class="card-desc">
+            Editorial biographical retrospective celebrating Alan Turing's groundbreaking work in computation, naval Enigma cryptanalysis, AI Turing Test, and an interactive Caesar/rotor cipher lab.
+          </p>
+          <div class="card-actions">
+            <a href="./WebDev-L2-TributePage/index.html" class="btn btn-launch">🚀 Launch Project</a>
+            <a href="https://github.com/1rafi3/OIBSIP/tree/main/WebDev-L2-TributePage" target="_blank" rel="noopener noreferrer" class="btn btn-code">Code</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Oasis Infobyte Student Internship Program (OIBSIP) — Web Development &amp; Designing Track</p>
+      <p style="margin-top: 0.35rem;">
+        Engineered by <strong>MD Sheik Rafiwol Karim Rafi</strong> · 
+        <a href="https://github.com/1rafi3" target="_blank" rel="noopener noreferrer">GitHub</a> · 
+        <a href="https://www.linkedin.com/in/rafiwolkarimrafi/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · 
+        <a href="mailto:rwolkorimrafi@gmail.com">Email</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Tab Filtering
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.level === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
