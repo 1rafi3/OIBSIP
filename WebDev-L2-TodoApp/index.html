@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskMaster Pro - Advanced Stateful To-Do Web Application with Pending/Completed Columns, Inline Editing, Priority Badges, and LocalStorage by MD Sheik Rafiwol Karim Rafi">
+  <title>TaskMaster Pro | Interactive Task Management Suite</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==============================================
+       DEMO VIDEO TITLE CARD OVERLAY (Oasis Requirement)
+       ============================================== -->
+  <div id="video-title-card" class="video-title-card">
+    <div class="card-inner">
+      <div class="badge-tag">OASIS INFOBYTE SIP — TASK SUBMISSION</div>
+      <h1 class="student-name">MD Sheik Rafiwol Karim Rafi</h1>
+      <p class="track-title"><strong>Track:</strong> Web Development & Designing</p>
+      <p class="task-title"><strong>Task:</strong> Level 2 — Task 3: To-Do Web App</p>
+      <div class="card-footer">
+        <span>OIBSIP / WebDev-L2-TodoApp</span>
+        <button id="close-title-card" class="btn-dismiss">Start Walkthrough &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Recording Control Button -->
+  <button id="show-title-card-btn" class="title-card-toggle" title="Show Submission Title Card for Screen Recording">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+    Record Title Card
+  </button>
+
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <span class="brand-icon">⚡</span>
+        <div>
+          <h1>TaskMaster <span class="brand-accent">Pro</span></h1>
+          <span class="brand-tagline">Engineered for High-Productivity Focus</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a href="../WebDev-L1-PersonalPortfolio/index.html" class="nav-return">&larr; Portfolio</a>
+        <button id="btn-clear-all" class="btn-danger-outline" title="Clear completed tasks">Clear Completed</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    
+    <!-- ================= TASK CREATION PANEL ================= -->
+    <section class="creator-card">
+      <form id="todo-form" class="todo-form" novalidate>
+        <div class="input-primary-row">
+          <input type="text" id="task-title" placeholder="What task needs to be accomplished today?" required autocomplete="off">
+          <button type="submit" class="btn btn-primary" id="btn-add-task">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Task</span>
+          </button>
+        </div>
+
+        <div class="input-options-row">
+          <div class="option-group">
+            <label for="task-priority">Priority Level:</label>
+            <select id="task-priority">
+              <option value="medium" selected>Medium Priority</option>
+              <option value="high">High Priority 🚨</option>
+              <option value="low">Low Priority ☕</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label for="task-category">Category:</label>
+            <select id="task-category">
+              <option value="development" selected>💻 Development</option>
+              <option value="academics">🎓 Academics & CSE</option>
+              <option value="dsa">🧩 DSA / LeetCode</option>
+              <option value="general">📋 General</option>
+            </select>
+          </div>
+
+          <div class="option-group search-group">
+            <label for="search-input">Search &amp; Filter:</label>
+            <input type="text" id="search-input" placeholder="Type to filter tasks...">
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- ================= METRICS OVERVIEW ================= -->
+    <section class="stats-bar">
+      <div class="stat-pill">
+        <span class="stat-num" id="total-count">0</span>
+        <span class="stat-text">Total Tasks</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-num color-pending" id="pending-count">0</span>
+        <span class="stat-text">Pending</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-num color-completed" id="completed-count">0</span>
+        <span class="stat-text">Completed</span>
+      </div>
+      <div class="stat-pill progress-pill">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="completion-progress"></div>
+        </div>
+        <span class="progress-label" id="completion-label">0% Done</span>
+      </div>
+    </section>
+
+    <!-- ================= DUAL COLUMN TASK BOARDS ================= -->
+    <div class="boards-grid">
+      
+      <!-- PENDING TASKS BOARD -->
+      <section class="board-column" id="pending-board">
+        <div class="column-header">
+          <div class="header-left">
+            <span class="column-badge pending"></span>
+            <h2>Pending Tasks</h2>
+          </div>
+          <span class="column-counter" id="badge-pending-count">0 pending</span>
+        </div>
+
+        <div class="task-list" id="pending-list">
+          <!-- Dynamically populated -->
+        </div>
+
+        <div class="empty-state" id="empty-pending">
+          <div class="empty-icon">🎉</div>
+          <h3>All Caught Up!</h3>
+          <p>No pending tasks at the moment. Add a new task above to stay productive.</p>
+        </div>
+      </section>
+
+      <!-- COMPLETED TASKS BOARD -->
+      <section class="board-column" id="completed-board">
+        <div class="column-header">
+          <div class="header-left">
+            <span class="column-badge completed"></span>
+            <h2>Completed Tasks</h2>
+          </div>
+          <span class="column-counter" id="badge-completed-count">0 completed</span>
+        </div>
+
+        <div class="task-list" id="completed-list">
+          <!-- Dynamically populated -->
+        </div>
+
+        <div class="empty-state" id="empty-completed">
+          <div class="empty-icon">⏳</div>
+          <h3>No Completed Tasks Yet</h3>
+          <p>Tasks you mark as complete will be catalogued here with completion timestamps.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <span>Built for Oasis Infobyte SIP — Level 2 Task 3</span>
+      <span>Designed &amp; Developed by <strong>MD Sheik Rafiwol Karim Rafi</strong></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ThermoFlow Studio - Scientific Multi-Unit Temperature Converter with Animated Mercury Thermometer, Formula Cards, and Absolute Zero Guards by MD Sheik Rafiwol Karim Rafi - Oasis Infobyte Task">
+  <title>ThermoFlow Studio | Scientific Temperature Converter</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==============================================
+       DEMO VIDEO TITLE CARD OVERLAY (Oasis Requirement)
+       ============================================== -->
+  <div id="video-title-card" class="video-title-card">
+    <div class="card-inner">
+      <div class="badge-tag">OASIS INFOBYTE SIP — TASK SUBMISSION</div>
+      <h1 class="student-name">MD Sheik Rafiwol Karim Rafi</h1>
+      <p class="track-title"><strong>Track:</strong> Web Development & Designing</p>
+      <p class="task-title"><strong>Task:</strong> Level 1 — Task 3: Temperature Converter Website</p>
+      <div class="card-footer">
+        <span>OIBSIP / WebDev-L1-TemperatureConverter</span>
+        <button id="close-title-card" class="btn-dismiss">Start Walkthrough &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Recording Control Button -->
+  <button id="show-title-card-btn" class="title-card-toggle" title="Show Submission Title Card for Screen Recording">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+    Record Title Card
+  </button>
+
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <span class="brand-icon">🌡️</span>
+        <div>
+          <h1>ThermoFlow <span class="brand-accent">Studio</span></h1>
+          <span class="brand-tagline">Scientific Multi-Scale Conversion Laboratory</span>
+        </div>
+      </div>
+      <a href="../WebDev-L1-PersonalPortfolio/index.html" class="nav-return">&larr; Portfolio</a>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="converter-layout">
+      
+      <!-- ================= CONVERTER INTERACTIVE PANEL ================= -->
+      <section class="card converter-card">
+        <div class="card-title-bar">
+          <h2>Temperature Conversion Lab</h2>
+          <span class="status-indicator-tag" id="thermal-state-tag">Normal State</span>
+        </div>
+
+        <form id="converter-form" novalidate>
+          
+          <!-- Input Value & Unit Selection -->
+          <div class="form-row">
+            <div class="form-group flex-2">
+              <label for="temp-input">Temperature Value <span class="required">*</span></label>
+              <div class="input-with-symbol">
+                <input type="text" id="temp-input" placeholder="Enter degrees (e.g. 25, -10, 98.6)" value="25" autocomplete="off" required>
+                <span class="input-unit-symbol" id="input-unit-symbol">°C</span>
+              </div>
+              <span class="validation-msg" id="validation-msg"></span>
+            </div>
+
+            <div class="form-group flex-1">
+              <label for="unit-select">Source Unit</label>
+              <select id="unit-select">
+                <option value="celsius" selected>Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="kelvin">Kelvin (K)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Quick Presets -->
+          <div class="presets-row">
+            <span class="preset-label">Quick Presets:</span>
+            <button type="button" class="preset-btn" data-val="0" data-unit="celsius">Freezing (0°C)</button>
+            <button type="button" class="preset-btn" data-val="25" data-unit="celsius">Room Temp (25°C)</button>
+            <button type="button" class="preset-btn" data-val="37" data-unit="celsius">Human Body (37°C)</button>
+            <button type="button" class="preset-btn" data-val="100" data-unit="celsius">Boiling (100°C)</button>
+            <button type="button" class="preset-btn caution" data-val="-273.15" data-unit="celsius">Absolute Zero</button>
+          </div>
+
+          <!-- Trigger Convert Button -->
+          <button type="submit" class="btn btn-convert" id="btn-convert">
+            <span>Calculate Conversions</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          </button>
+        </form>
+
+        <!-- Edge Case / Absolute Zero Alert Box -->
+        <div id="absolute-zero-alert" class="alert-banner hidden">
+          <span class="alert-icon">⚠️</span>
+          <div>
+            <strong>Absolute Zero Violation!</strong>
+            <p id="alert-text">Temperatures cannot physically drop below Absolute Zero (−273.15°C / 0K / −459.67°F) according to the Third Law of Thermodynamics.</p>
+          </div>
+        </div>
+
+        <!-- Simultaneous Output Display Grid -->
+        <div class="results-grid">
+          <div class="result-tile" id="tile-celsius">
+            <div class="result-tile-header">
+              <span class="tile-label">Celsius</span>
+              <span class="tile-formula font-mono">°C</span>
+            </div>
+            <div class="result-value" id="val-celsius">25.00 °C</div>
+            <span class="result-sub">Standard Metric Scale</span>
+          </div>
+
+          <div class="result-tile" id="tile-fahrenheit">
+            <div class="result-tile-header">
+              <span class="tile-label">Fahrenheit</span>
+              <span class="tile-formula font-mono">°F</span>
+            </div>
+            <div class="result-value" id="val-fahrenheit">77.00 °F</div>
+            <span class="result-sub">US Customary Scale</span>
+          </div>
+
+          <div class="result-tile" id="tile-kelvin">
+            <div class="result-tile-header">
+              <span class="tile-label">Kelvin</span>
+              <span class="tile-formula font-mono">K</span>
+            </div>
+            <div class="result-value" id="val-kelvin">298.15 K</div>
+            <span class="result-sub">SI Thermodynamic Scale</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= THERMOMETER VISUALIZATION ================= -->
+      <section class="card thermometer-card">
+        <h3>Mercury Gauge Simulation</h3>
+        <p class="gauge-desc">Real-time graphic representation of thermal energy.</p>
+
+        <div class="thermometer-visual">
+          <div class="gauge-scale">
+            <span>100°C - Boiling</span>
+            <span>75°C - Hot</span>
+            <span>50°C - Warm</span>
+            <span>25°C - Room</span>
+            <span>0°C - Freezing</span>
+            <span>-50°C - Sub-zero</span>
+          </div>
+
+          <!-- Physical Thermometer Tube -->
+          <div class="tube-container">
+            <div class="glass-stem">
+              <div class="mercury-column" id="mercury-column"></div>
+            </div>
+            <div class="glass-bulb">
+              <div class="mercury-bulb" id="mercury-bulb"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formula-breakdown">
+          <h4>Conversion Formulas Applied:</h4>
+          <ul>
+            <li><code>°F = (°C × 9/5) + 32</code></li>
+            <li><code>K = °C + 273.15</code></li>
+            <li><code>°C = (°F − 32) × 5/9</code></li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <span>Built for Oasis Infobyte SIP — Level 1 Task 3</span>
+      <span>Designed &amp; Developed by <strong>MD Sheik Rafiwol Karim Rafi</strong></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

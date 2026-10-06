@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alan Turing Editorial Tribute Page - Exploring the Father of Modern Computer Science, AI, and Bletchley Park Cryptanalysis by MD Sheik Rafiwol Karim Rafi - Oasis Infobyte Task">
+  <title>Alan Turing | The Father of Modern Computing</title>
+  
+  <!-- Google Fonts: Serif for Literary Headings, Sans for Body, Mono for Cipher -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==============================================
+       DEMO VIDEO TITLE CARD OVERLAY (Oasis Requirement)
+       ============================================== -->
+  <div id="video-title-card" class="video-title-card">
+    <div class="card-inner">
+      <div class="badge-tag">OASIS INFOBYTE SIP — TASK SUBMISSION</div>
+      <h1 class="student-name">MD Sheik Rafiwol Karim Rafi</h1>
+      <p class="track-title"><strong>Track:</strong> Web Development & Designing</p>
+      <p class="task-title"><strong>Task:</strong> Level 2 — Task 2: Tribute Page</p>
+      <div class="card-footer">
+        <span>OIBSIP / WebDev-L2-TributePage</span>
+        <button id="close-title-card" class="btn-dismiss">Start Walkthrough &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Recording Control Button -->
+  <button id="show-title-card-btn" class="title-card-toggle" title="Show Submission Title Card for Screen Recording">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+    Record Title Card
+  </button>
+
+  <!-- Sticky Editorial Nav -->
+  <header class="editorial-nav">
+    <div class="nav-container">
+      <span class="nav-brand">THE TURING ARCHIVES</span>
+      <div class="nav-links">
+        <a href="#biography">Biography</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#enigma-lab">Enigma Lab</a>
+        <a href="#quote-section">Philosophy</a>
+        <a href="../WebDev-L1-PersonalPortfolio/index.html" class="nav-portfolio-link">&larr; Portfolio</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       HERO & SUBJECT TITLE
+       ============================================== -->
+  <section class="tribute-hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-container">
+      <div class="hero-text">
+        <span class="century-tag">1912 – 1954 · MATHEMATICIAN &amp; CRYPTANALYST</span>
+        <h1 class="subject-name">Alan Mathison Turing</h1>
+        <p class="subject-tagline">
+          The Father of Theoretical Computer Science, Modern Artificial Intelligence, and the Mind that Cracked the Enigma Code.
+        </p>
+        <div class="hero-anchors">
+          <a href="#biography" class="btn btn-editorial">Read Biography</a>
+          <a href="#enigma-lab" class="btn btn-cipher">Interactive Enigma Lab &darr;</a>
+        </div>
+      </div>
+
+      <!-- Prominent Subject Portrait -->
+      <div class="hero-portrait-frame">
+        <div class="portrait-glow"></div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16_colourised.jpg" 
+             alt="Portrait of Alan Turing" 
+             class="portrait-img"
+             loading="eager"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/7/79/Alan_Turing_az_1930-as_%C3%A9vekben.jpg'">
+        <div class="portrait-caption">
+          <span>Alan Turing, pioneer of universal computation.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       BIOGRAPHY SECTION (At least 3-4 Paragraphs)
+       ============================================== -->
+  <section class="section bio-section" id="biography">
+    <div class="container bio-container">
+      <div class="section-heading">
+        <span class="sub-label">Historical Retrospective</span>
+        <h2>The Architecture of an Incomparable Intellect</h2>
+      </div>
+
+      <div class="bio-columns">
+        <div class="bio-lead">
+          <p class="drop-cap-p">
+            Alan Mathison Turing was born on June 23, 1912, in London, England. From his early academic years at King's College, Cambridge, Turing demonstrated an unprecedented genius for pure mathematics and abstract systems. In 1936, at just twenty-four years of age, he published his seminal paper, <em>"On Computable Numbers, with an Application to the Entscheidungsproblem,"</em> in which he introduced the theoretical concept of what we now celebrate as the <strong>Universal Turing Machine</strong> — an abstract mathematical model capable of simulating any algorithmic calculation.
+          </p>
+        </div>
+
+        <div class="bio-body">
+          <p>
+            During the height of the Second World War, Turing became the primary intellectual force at the government codebreaking center at <strong>Bletchley Park (Station X)</strong>. Working in Hut 8, he engineered the electromechanical <em>Bombe</em> machine, which automated the decryption of intercepted Axis Enigma signals. Historians estimate that his cryptanalytic breakthroughs shortened the war in Europe by more than two years, saving millions of civilian and military lives across the globe.
+          </p>
+
+          <p>
+            Following the war, Turing shifted his focus toward the horizon of synthetic cognition. At the National Physical Laboratory, he designed the Automatic Computing Engine (ACE) — one of the earliest designs for a stored-program computer. In 1950, he published <em>"Computing Machinery and Intelligence,"</em> introducing the legendary <strong>Turing Test</strong>, which remains the foundational benchmark for assessing machine sentience and modern artificial intelligence architectures today.
+          </p>
+
+          <p>
+            Despite his immense contributions to global freedom and the dawn of the Information Age, Turing faced state persecution for his sexual orientation in 1952. Choosing chemical probation over imprisonment to continue his mathematical research, Turing died tragically in 1954 at the age of forty-one. In 2013, he was granted an official Royal Pardon, rightfully memorialized as one of the greatest visionaries in human history.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       DISTINCT QUOTE BLOCK
+       ============================================== -->
+  <section class="section quote-section" id="quote-section">
+    <div class="container">
+      <blockquote class="turing-quote">
+        <div class="quote-mark">“</div>
+        <p class="quote-text">
+          Sometimes it is the people no one imagines anything of who do the things that no one can imagine.
+        </p>
+        <cite class="quote-author">— Alan Turing, Computing Machinery &amp; Thought</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       KEY ACHIEVEMENTS & MILESTONES TIMELINE
+       ============================================== -->
+  <section class="section timeline-section" id="timeline">
+    <div class="container">
+      <div class="section-heading centered">
+        <span class="sub-label">Chronology of Innovation</span>
+        <h2>Milestones That Shaped Computing History</h2>
+      </div>
+
+      <div class="timeline-tree">
+        <div class="timeline-node">
+          <div class="node-year">1936</div>
+          <div class="node-content">
+            <h3>The Universal Turing Machine</h3>
+            <p>Formulated the mathematical foundation of modern computer science, establishing the principles of algorithms, stored-program architecture, and computational limits.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node">
+          <div class="node-year">1939</div>
+          <div class="node-content">
+            <h3>Bletchley Park &amp; The Bombe Machine</h3>
+            <p>Designed the electromechanical Bombe codebreaking machine at Hut 8, cracking the naval Enigma ciphers and altering the trajectory of World War II.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node">
+          <div class="node-year">1946</div>
+          <div class="node-content">
+            <h3>Automatic Computing Engine (ACE)</h3>
+            <p>Produced the earliest detailed design specification for a stored-program digital computer, pioneering subroutines and electronic high-speed memory.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node">
+          <div class="node-year">1950</div>
+          <div class="node-content">
+            <h3>The Imitation Game (Turing Test)</h3>
+            <p>Authored the foundational philosophical framework for Artificial Intelligence, proposing the Turing Test to investigate whether machines can think.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node">
+          <div class="node-year">1952</div>
+          <div class="node-content">
+            <h3>Morphogenesis &amp; Computational Biology</h3>
+            <p>Published groundbreaking mathematical equations modeling biological pattern formation (reaction-diffusion systems) — decades ahead of mathematical biology.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       INTERACTIVE ENIGMA CIPHER SIMULATOR (BONUS LAB)
+       ============================================== -->
+  <section class="section cipher-section" id="enigma-lab">
+    <div class="container">
+      <div class="section-heading centered">
+        <span class="sub-label">Interactive Cryptography</span>
+        <h2>Station X: Real-Time Caesar / Rotor Cipher Simulator</h2>
+        <p class="section-sub">Experience the mechanics of character substitution that Turing deciphered at Bletchley Park.</p>
+      </div>
+
+      <div class="cipher-box">
+        <div class="cipher-controls">
+          <div class="control-item">
+            <label for="rotor-shift">Rotor Key Shift (Offset 1-25):</label>
+            <input type="range" id="rotor-shift" min="1" max="25" value="3">
+            <span class="shift-value font-mono" id="shift-val">3 (Key C)</span>
+          </div>
+        </div>
+
+        <div class="cipher-io-grid">
+          <div class="io-panel">
+            <label for="cipher-input">Plaintext Message:</label>
+            <textarea id="cipher-input" rows="4" placeholder="Type a message to encrypt with rotor cipher...">TURING BROKE THE ENIGMA CODE</textarea>
+          </div>
+
+          <div class="io-panel">
+            <label for="cipher-output">Encrypted Ciphertext:</label>
+            <textarea id="cipher-output" rows="4" readonly class="font-mono"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       EDITORIAL FOOTER
+       ============================================== -->
+  <footer class="editorial-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-title">In Memoriam · Alan Mathison Turing (1912–1954)</span>
+        <p>A tribute curated for the Oasis Infobyte Student Internship Program (OIBSIP) · Level 2 Task 2</p>
+      </div>
+      <div class="footer-right">
+        <span>Designed &amp; Researched by <strong>MD Sheik Rafiwol Karim Rafi</strong></span>
+        <span class="footer-contact">Computer Science &amp; Engineering | <a href="mailto:rwolkorimrafi@gmail.com">rwolkorimrafi@gmail.com</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

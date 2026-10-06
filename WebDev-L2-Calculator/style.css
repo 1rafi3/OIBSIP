@@ -1,0 +1,506 @@
+/* ==========================================================================
+   OMNICALC PRO - DESIGN SYSTEM & STYLESHEET
+   Author: MD Sheik Rafiwol Karim Rafi
+   Track: Web Development & Designing (Oasis Infobyte OIBSIP - Level 2 Task 1)
+   ========================================================================== */
+
+:root {
+  --bg-app: #080b12;
+  --bg-card: rgba(18, 24, 38, 0.85);
+  --bg-screen: #0a0f1d;
+  --bg-key-num: rgba(255, 255, 255, 0.05);
+  --bg-key-func: rgba(255, 255, 255, 0.08);
+  --bg-key-op: rgba(99, 102, 241, 0.15);
+  --bg-key-op-hover: rgba(99, 102, 241, 0.3);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --accent-primary: #6366f1;
+  --accent-secondary: #06b6d4;
+  --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --equals-gradient: linear-gradient(135deg, #10b981, #059669);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(99, 102, 241, 0.4);
+
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.6);
+  --transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   VIDEO TITLE CARD OVERLAY (Oasis Requirement)
+   ========================================================================== */
+.video-title-card {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: radial-gradient(circle at center, rgba(16, 22, 35, 0.98), rgba(6, 8, 14, 0.99));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.video-title-card.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.card-inner {
+  max-width: 650px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-focus);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 0 35px rgba(99, 102, 241, 0.25), var(--shadow-card);
+  animation: entrance 0.4s ease-out;
+}
+
+@keyframes entrance {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.badge-tag {
+  display: inline-block;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+}
+
+.student-name {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a5b4fc, #818cf8, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.75rem;
+}
+
+.track-title, .task-title {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.track-title strong, .task-title strong {
+  color: var(--text-primary);
+}
+
+.card-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.btn-dismiss {
+  background: var(--accent-gradient);
+  border: none;
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.btn-dismiss:hover {
+  transform: translateY(-2px);
+}
+
+.title-card-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(18, 24, 38, 0.9);
+  color: var(--accent-secondary);
+  border: 1px solid var(--border-focus);
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition);
+}
+
+.title-card-toggle:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   APP HEADER
+   ========================================================================== */
+.app-header {
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(18, 24, 38, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.header-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-icon { font-size: 1.8rem; }
+.brand h1 { font-size: 1.35rem; font-weight: 800; line-height: 1.2; }
+.brand-accent { color: var(--accent-primary); }
+.brand-desc { font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); }
+
+.nav-return {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-return:hover { color: var(--text-primary); }
+
+/* ==========================================================================
+   CALCULATOR APP LAYOUT
+   ========================================================================== */
+.main-layout {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.calc-app-wrapper {
+  display: grid;
+  grid-template-columns: 380px 300px;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+/* Calculator Body */
+.calculator-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-card);
+}
+
+/* Screen Display */
+.display-screen {
+  background: var(--bg-screen);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 110px;
+}
+
+.screen-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.engine-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-secondary);
+}
+
+.screen-action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.screen-action-btn:hover {
+  color: var(--text-primary);
+}
+
+.history-expression {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-align: right;
+  min-height: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.current-value {
+  font-family: var(--font-mono);
+  font-size: 2.3rem;
+  font-weight: 700;
+  text-align: right;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   CSS GRID KEYPAD MATRIX
+   ========================================================================== */
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.key {
+  height: 60px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  user-select: none;
+}
+
+.key:active {
+  transform: scale(0.95);
+}
+
+/* Number Keys */
+.key.num {
+  background: var(--bg-key-num);
+  color: var(--text-primary);
+}
+
+.key.num:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Function Keys */
+.key.func {
+  background: var(--bg-key-func);
+  color: var(--accent-secondary);
+}
+
+.key.func:hover {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: var(--accent-secondary);
+}
+
+/* Operator Keys */
+.key.operator {
+  background: var(--bg-key-op);
+  color: var(--accent-primary);
+  font-size: 1.4rem;
+}
+
+.key.operator:hover {
+  background: var(--bg-key-op-hover);
+  border-color: var(--accent-primary);
+}
+
+/* Equals Key */
+.key.equals {
+  background: var(--equals-gradient);
+  color: #fff;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.key.equals:hover {
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+  transform: translateY(-2px);
+}
+
+.keyboard-guide {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   CALCULATION HISTORY TAPE
+   ========================================================================== */
+.history-tape-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tape-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.tape-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.btn-clear-tape {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-clear-tape:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.tape-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tape-item {
+  background: var(--bg-screen);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.tape-item:hover {
+  border-color: var(--accent-primary);
+}
+
+.tape-expr {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.tape-res {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-secondary);
+}
+
+.tape-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.tape-empty.hidden { display: none; }
+
+/* Footer */
+.app-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+}
+
+.app-footer .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .calc-app-wrapper { grid-template-columns: 1fr; }
+  .history-tape-card { height: 260px; }
+  .app-footer .container { flex-direction: column; gap: 0.5rem; }
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Precision Modern Calculator with Safe Expression Evaluation Engine, Calculation History Tape, Keyboard Shortcuts, and CSS Grid by MD Sheik Rafiwol Karim Rafi - Oasis Infobyte Task">
+  <title>OmniCalc Pro | Modern Precision Calculator</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==============================================
+       DEMO VIDEO TITLE CARD OVERLAY (Oasis Requirement)
+       ============================================== -->
+  <div id="video-title-card" class="video-title-card">
+    <div class="card-inner">
+      <div class="badge-tag">OASIS INFOBYTE SIP — TASK SUBMISSION</div>
+      <h1 class="student-name">MD Sheik Rafiwol Karim Rafi</h1>
+      <p class="track-title"><strong>Track:</strong> Web Development & Designing</p>
+      <p class="task-title"><strong>Task:</strong> Level 2 — Task 1: Calculator</p>
+      <div class="card-footer">
+        <span>OIBSIP / WebDev-L2-Calculator</span>
+        <button id="close-title-card" class="btn-dismiss">Start Walkthrough &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Recording Control Button -->
+  <button id="show-title-card-btn" class="title-card-toggle" title="Show Submission Title Card for Screen Recording">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+    Record Title Card
+  </button>
+
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <span class="brand-icon">🧮</span>
+        <div>
+          <h1>OmniCalc <span class="brand-accent">Pro</span></h1>
+          <span class="brand-desc">Engineered Mathematical Precision (No eval())</span>
+        </div>
+      </div>
+      <a href="../WebDev-L1-PersonalPortfolio/index.html" class="nav-return">&larr; Portfolio</a>
+    </div>
+  </header>
+
+  <main class="main-layout">
+    <div class="calc-app-wrapper">
+      
+      <!-- ================= CALCULATOR BODY ================= -->
+      <section class="calculator-card">
+        
+        <!-- Screen Display -->
+        <div class="display-screen" id="display-screen">
+          <div class="screen-top-bar">
+            <span class="engine-badge">Safe Math Engine</span>
+            <button id="btn-copy-result" class="screen-action-btn" title="Copy result to clipboard">📋 Copy</button>
+          </div>
+          <div class="history-expression" id="history-display">&nbsp;</div>
+          <div class="current-value" id="current-display">0</div>
+        </div>
+
+        <!-- CSS Grid Button Matrix -->
+        <div class="keypad-grid" id="keypad">
+          <!-- Row 1 -->
+          <button class="key func" data-action="clear" id="key-clear">C</button>
+          <button class="key func" data-action="backspace" id="key-backspace" title="Delete last character">⌫</button>
+          <button class="key func" data-action="percent" id="key-percent">%</button>
+          <button class="key operator" data-operator="÷" id="key-divide">÷</button>
+
+          <!-- Row 2 -->
+          <button class="key num" data-num="7">7</button>
+          <button class="key num" data-num="8">8</button>
+          <button class="key num" data-num="9">9</button>
+          <button class="key operator" data-operator="×" id="key-multiply">×</button>
+
+          <!-- Row 3 -->
+          <button class="key num" data-num="4">4</button>
+          <button class="key num" data-num="5">5</button>
+          <button class="key num" data-num="6">6</button>
+          <button class="key operator" data-operator="−" id="key-subtract">−</button>
+
+          <!-- Row 4 -->
+          <button class="key num" data-num="1">1</button>
+          <button class="key num" data-num="2">2</button>
+          <button class="key num" data-num="3">3</button>
+          <button class="key operator" data-operator="+" id="key-add">+</button>
+
+          <!-- Row 5 -->
+          <button class="key func" data-action="toggle-sign">±</button>
+          <button class="key num" data-num="0">0</button>
+          <button class="key num" data-action="decimal">.</button>
+          <button class="key equals" data-action="calculate" id="key-equals">=</button>
+        </div>
+
+        <div class="keyboard-guide">
+          <span>⌨️ Keyboard Supported: [0-9], [+ - * /], [Enter (=)], [Backspace], [Esc (C)]</span>
+        </div>
+      </section>
+
+      <!-- ================= CALCULATION AUDIT TAPE ================= -->
+      <section class="history-tape-card">
+        <div class="tape-header">
+          <h3>Calculation Tape</h3>
+          <button id="btn-clear-history" class="btn-clear-tape">Clear</button>
+        </div>
+        <div class="tape-list" id="tape-list">
+          <!-- Dynamically populated entries -->
+        </div>
+        <div class="tape-empty" id="tape-empty">
+          <p>No calculation history recorded yet.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <span>Built for Oasis Infobyte SIP — Level 2 Task 1</span>
+      <span>Engineered by <strong>MD Sheik Rafiwol Karim Rafi</strong></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
